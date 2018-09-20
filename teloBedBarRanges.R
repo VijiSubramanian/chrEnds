@@ -8,6 +8,8 @@
 ########################################################################
 
 # to collect telomere-adjacent and internal signal values using granges
+# script to calculate mean signal from both chromosome ends. 
+# Can specify beginning and end positions of these data collectively for the ends.
 
 teloBedBarRanges20 = function(Sample, genome, begin=20000, lengthToCollect=110000) {
 	library(magrittr)
@@ -50,9 +52,12 @@ teloBedBarRanges20 = function(Sample, genome, begin=20000, lengthToCollect=11000
         len <- chrLen[chrLen[,1]==i,2]
         # subset data according to chromosome number
         # collect data for the right arm, left arm and internal regions while dropping 30 Kb (begin) from either end of the chromosome
-        rightArm <- Sample[GenomicRanges::seqnames(Sample) == i & GenomicRanges::start(Sample) >= (len  - lengthToCollect) & GenomicRanges::end(Sample) <= (len - begin)]
-        leftArm <- Sample[GenomicRanges::seqnames(Sample) == i & GenomicRanges::start(Sample) >= (begin) & GenomicRanges::end(Sample) <= (lengthToCollect)]
-        intChr <- Sample[GenomicRanges::seqnames(Sample) == i & GenomicRanges::start(Sample) >= (lengthToCollect + 1) & GenomicRanges::end(Sample) <= (len - lengthToCollect -1)]
+        rightArm <- Sample[GenomicRanges::seqnames(Sample) == i & 
+			   GenomicRanges::start(Sample) >= (len  - lengthToCollect) & GenomicRanges::end(Sample) <= (len - begin)]
+        leftArm <- Sample[GenomicRanges::seqnames(Sample) == i & 
+			  GenomicRanges::start(Sample) >= (begin) & GenomicRanges::end(Sample) <= (lengthToCollect)]
+        intChr <- Sample[GenomicRanges::seqnames(Sample) == i & 
+			 GenomicRanges::start(Sample) >= (lengthToCollect + 1) & GenomicRanges::end(Sample) <= (len - lengthToCollect -1)]
         
         # append data for each chromsome to a new object
         rightArmAll <- c(rightArmAll, rightArm)
