@@ -1,5 +1,5 @@
 """
-Bootstrap rDNA borders: Viji Subramanian July 14, 2017
+Bootstrap rDNA borders: Viji Subramanian 
 modified Bootstrap centromeres by Tovah Markowitz: 3/1/17
 updated to handle bedgraph files by Viji Subramanian: 6/26/17
 excludes 110Kb from chromosome ends(EAR domains) from the sample
