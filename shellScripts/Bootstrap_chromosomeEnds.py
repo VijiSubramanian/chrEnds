@@ -1,5 +1,5 @@
 """
-Bootstrap chromosome ends: Viji Subramanian July 14, 2017
+Bootstrap chromosome ends: Viji Subramanian
 modified Bootstrap centromeres by Tovah Markowitz: 3/1/17
 updated to handle bedgraph files by Viji Subramanian: 6/26/17
 
