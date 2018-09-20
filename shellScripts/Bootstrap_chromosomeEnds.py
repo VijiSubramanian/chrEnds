@@ -1,12 +1,8 @@
 """
 Bootstrap chromosome ends: Viji Subramanian July 14, 2017
-modified Bootstrap centromeres by Tovah Markowitz 
-written 3/1/17
-updated to handle bedgraph files: 6/26/17
+modified Bootstrap centromeres by Tovah Markowitz: 3/1/17
+updated to handle bedgraph files by Viji Subramanian: 6/26/17
 
-specifically designed to work with chromosome ends ( two feature of equal size on each chromosome )
-also written for S288C naming system, but easily adapted to check chromosomes
-need to add error check to ensure bedfile works with current requirements
 inputs: all chromosome unzipped wiggle file, bed/gff file, number of resamples, size of region, root of output file names
 calculates: ratio of mean signal of regions versus mean signal of entire mapped genome
 """
