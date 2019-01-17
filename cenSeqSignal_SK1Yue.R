@@ -12,8 +12,8 @@ cenSeqSignal = function(Sample, genome = 'SK1Yue', extend = 5000) {
   	library(dplyr)
   	library(magrittr)
   	library(pbapply)
-	  library(GenomicRanges)
-	  library(EnrichedHeatmap)
+	library(GenomicRanges)
+	library(EnrichedHeatmap)
     
     if (genome == 'SK1Yue') {
     genome_info <- hwglabr2::get_chr_coordinates(genome)
@@ -45,4 +45,21 @@ cenSeqSignal = function(Sample, genome = 'SK1Yue', extend = 5000) {
      message(paste0('\n\nCompleted in ', round((proc.time()[3] - ptm[3]), 2), ' sec.\n'))
      return(signal_at_cens_avrg)
 	}
+
+####### to plot ChIP-Seq signal around centromere
+
+####### source above script
+#source("/Volumes/LabShare/Viji/Scripts/ChIPSeq_R/SK1Yue_Bed/cenSeqSignal_SK1Yue.R")
+
+####### Collect signal around centromeres
+#AH6179Hop1T3cen <- cenSeqSignal(AH6179Hop1T3)
+#AH6179Hop1T6cen <- cenSeqSignal(AH6179Hop1T6)
+
+####### plot the signal
+par(las=1)
+#plot(x=seq(-4999, 5000), y=AH6179Hop1T6cen, col="forestgreen", xlab='Distance from cen', ylab='Average Hop1 signal', type='l', bty='n', lwd=5, ylim = c(0.4,7))
+#lines(x=seq(-4999, 5000), y=AH6179Hop1T3cen, type='l', lwd=5, col="darkseagreen")
+#abline(h = 1, col = "gray60", lwd=3, lty=3)
+#legend(2000,2.49, c("T = 3hr ndt80","T = 6hr ndt80"), text.col = c("darkseagreen", "forestgreen"), bty = "n")
+
 
