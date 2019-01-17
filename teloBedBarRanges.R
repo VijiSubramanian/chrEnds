@@ -30,40 +30,37 @@ teloBedBarRanges20 = function(Sample, genome, begin=20000, lengthToCollect=11000
 	
 	}
 	
-	if (genome == "mouse"){
-        chrLen <- read.table('/Volumes/LabShare/Viji/OthersData/langeKeeney/mouseChrSize.txt',header=T)
-	}
 	
-	if (!genome %in% c('SK1Yue', 'sacCer2', 'mouse')){
+	if (!genome %in% c('SK1Yue', 'sacCer2')){
 		stop('"genome" must be either "SK1Yue" or "sacCer2"', call. = FALSE)
-    }
+    	}
     
 	# sort Sample data
 	Sample <- sort(GenomeInfoDb::sortSeqlevels(Sample))
 	Sample <- sort(Sample)
 	
-    # creat empty GRanges objects
-	  rightArmAll <- GRanges()
-    leftArmAll <- GRanges()
-    intChrAll <- GRanges()
+    	# creat empty GRanges objects
+    	rightArmAll <- GRanges()
+    	leftArmAll <- GRanges()
+    	intChrAll <- GRanges()
     
-    for (i in chrLen[,1]){
-        # assign length of the chromosome
-        len <- chrLen[chrLen[,1]==i,2]
-        # subset data according to chromosome number
-        # collect data for the right arm, left arm and internal regions while dropping 30 Kb (begin) from either end of the chromosome
-        rightArm <- Sample[GenomicRanges::seqnames(Sample) == i & 
+    	for (i in chrLen[,1]){
+        	# assign length of the chromosome
+        	len <- chrLen[chrLen[,1]==i,2]
+        	# subset data according to chromosome number
+        	# collect data for the right arm, left arm and internal regions while dropping 30 Kb (begin) from either end of the chromosome
+        	rightArm <- Sample[GenomicRanges::seqnames(Sample) == i & 
 			   GenomicRanges::start(Sample) >= (len  - lengthToCollect) & GenomicRanges::end(Sample) <= (len - begin)]
-        leftArm <- Sample[GenomicRanges::seqnames(Sample) == i & 
+        	leftArm <- Sample[GenomicRanges::seqnames(Sample) == i & 
 			  GenomicRanges::start(Sample) >= (begin) & GenomicRanges::end(Sample) <= (lengthToCollect)]
-        intChr <- Sample[GenomicRanges::seqnames(Sample) == i & 
+        	intChr <- Sample[GenomicRanges::seqnames(Sample) == i & 
 			 GenomicRanges::start(Sample) >= (lengthToCollect + 1) & GenomicRanges::end(Sample) <= (len - lengthToCollect -1)]
         
-        # append data for each chromsome to a new object
-        rightArmAll <- c(rightArmAll, rightArm)
-        leftArmAll <- c(leftArmAll, leftArm)
-        intChrAll <- c(intChrAll, intChr)
-    }
+        	# append data for each chromsome to a new object
+        	rightArmAll <- c(rightArmAll, rightArm)
+        	leftArmAll <- c(leftArmAll, leftArm)
+        	intChrAll <- c(intChrAll, intChr)
+    	}
     
     # sort GRanges data
     rightArmAll <- sort(GenomeInfoDb::sortSeqlevels(rightArmAll))
