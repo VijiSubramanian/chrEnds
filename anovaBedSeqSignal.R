@@ -33,3 +33,12 @@ anovaBedSeqSignal = function(Sample1, Sample2) {
 
     return(suMMary)
     }
+
+
+###### to measure difference in the slope of two regression lines
+###### source above script
+#source("anovaBedSeqSignal.R")
+
+###### input bedgraph files for Sample1 and Sample2
+#Sample1_Sample2_anova <- capture.output(anovaBedSeqSignal(Sample1, Sample2))
+cat(Sample1_Sample2_anova, file= "Sample1_Sample2_anova", sep = '\n', append = TRUE)
