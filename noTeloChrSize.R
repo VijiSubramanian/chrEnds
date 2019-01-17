@@ -145,14 +145,22 @@ noTeloChrSize = function(Sample, genome, lengthToCollect=110000) {
     return(list(sampleSeq_avrg, intChrSeq_avrg))
 }
 
-#par(las=1)
-# plot(log2(sampleSeq_avrg[,3]), log2(sampleSeq_avrg[,2]), type="p", ylim=c(-1.3,1.3), xlim=c(17.7, 20.7), pch = 16, cex = 3, col="orange4", xlab="Chromosome Size (lKb) log2 scale", ylab="Average Enrichment (log2 scale)", bty='n')
-# points(log2(intChrSeq_avrg[,3]), log2(intChrSeq_avrg[,2]), type="p", pch = 16, cex = 3, col="magenta4")
-#plot(log2(AH6179Hop1T6_noTelo[[1]][,3]), log2(AH6179Hop1T6_noTelo[[1]][,2]), type="p", ylim=c(-1,1), xlim=c(18.2, 20.7), pch = 16, cex = 3, col="#F2AB1E", xlab="Chromosome Size (Kb) log2 scale", ylab="Average binding log2 scale", bty='n')
+#######
+
+####### source above script
+#source("/Volumes/LabShare/Viji/Scripts/ChIPSeq_R/SK1Yue_Bed/noTeloChrSize.R")
+
+####### input bedgraph data
+#AH6179Hop1T3_noTelo <- noTeloChrSize(AH6179Hop1T3, genome = "SK1Yue", lengthToCollect = 110000)
+#AH6179Hop1T6_noTelo <- noTeloChrSize(AH6179Hop1T6, genome = "SK1Yue", lengthToCollect = 110000)
+
+####### plot ChrSize-EARs
+#plot(log2(AH6179Hop1T6_noTelo[[1]][,3]), log2(AH6179Hop1T6_noTelo[[1]][,2]), type="p", ylim=c(-1,1.5), xlim=c(17.7, 20.7), pch = 16, cex = 3, col="#F2AB1E", xlab="Chromosome Size (Kb) log2 scale", ylab="Average binding log2 scale", bty='n')
 #points(log2(AH6179Hop1T6_noTelo[[2]][,3]), log2(AH6179Hop1T6_noTelo[[2]][,2]), pch = 16, cex = 3, col="magenta4" )
 #abline(lm(log2(AH6179Hop1T6_noTelo[[1]][,2])~log2(AH6179Hop1T6_noTelo[[1]][,3])), col = "#F2AB1E", lwd=3, lty=3)
 #abline(lm(log2(AH6179Hop1T6_noTelo[[2]][,2])~log2(AH6179Hop1T6_noTelo[[2]][,3])), col = "magenta4", lwd=3, lty=3)
 #arrows( log2(AH6179Hop1T6_noTelo[[1]][,3]), log2(AH6179Hop1T6_noTelo[[1]][,2] - AH6179Hop1T6_noTelo[[1]][,4]), log2(AH6179Hop1T6_noTelo[[1]][,3]), log2(AH6179Hop1T6_noTelo[[1]][,2] + AH6179Hop1T6_noTelo[[1]][,4]), length=0.05, angle=90, code=3, col="#F0AB20")
 #arrows( log2(AH6179Hop1T6_noTelo[[2]][,3]), log2(AH6179Hop1T6_noTelo[[2]][,2] - AH6179Hop1T6_noTelo[[2]][,4]), log2(AH6179Hop1T6_noTelo[[2]][,3]), log2(AH6179Hop1T6_noTelo[[2]][,2] + AH6179Hop1T6_noTelo[[2]][,4]), length=0.05, angle=90, code=3, col="magenta4")
 #legend(19.2,1.4, c("T=6 ndt80 Hop1 ChIP", "T=6 ndt80 Hop1 ChIP, no EARs"), text.col = c( "#F0AB20", "magenta4"), bty = "n")
+
 
