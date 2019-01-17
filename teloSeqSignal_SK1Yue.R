@@ -64,17 +64,29 @@ teloSeqSignal = function(Sample, remove_cen = FALSE, cen_region_length=50000, le
     #source('/Volumes/LabShare/Viji/Scripts/ChIPSeq_R/SK1Yue_Bed/Compress.R')
     Sample_teloCompressed <- hwglabr2::compress_signal_track(Sample_teloGADF, window_size = 200)
     
-	# smooth data
-	Sample_telo <- ksmooth(x=Sample_teloCompressed$position, y=Sample_teloCompressed$window_mean, bandwidth = 25000)
+    # smooth data
+    Sample_telo <- ksmooth(x=Sample_teloCompressed$position, y=Sample_teloCompressed$window_mean, bandwidth = 25000)
     
     message(paste0('\n\nCompleted in ', round((proc.time()[3] - ptm[3]), 2), ' sec.\n'))
     
 	return(Sample_telo)
 	}
 
-#plotting functions with function output
-	# par(las=1)
-	# plot(Sample1_telo, col=col1, xlab='Distance to chr end', ylab='Average signal', type='l', bty='n', lwd=5, ylim = c(0.5,2))
-	# lines(Sample2_telo, type='l', lwd=5, col=col2)
-	# abline(h = 1, col = "gray60", lwd=3, lty=3)
-	
+
+########
+
+######## source above script
+#source("teloSeqSignal_SK1Yue.R")
+
+######## calculate signal in telomeres
+#AH6179Hop1T3telo <- teloSeqSignal(AH6179Hop1T3)
+#AH6179Hop1T6telo <- teloSeqSignal(AH6179Hop1T6)
+
+######## plot telo signal
+#par(las=1)
+#plot(AH6179Hop1T6telo, col="forestgreen", xlab='Distance to chr end', ylab='Average Hop1 signal', type='l', bty='n', lwd=5, ylim = c(0.5,2))
+#lines(AH6179Hop1T3telo, type='l', lwd=5, col="darkseagreen")
+#abline(h = 1, col = "gray60", lwd=3, lty=3)
+#legend(80000,1.79, c("T = 3hr ndt80","T = 6hr ndt80"), text.col = c("darkseagreen", "forestgreen"), bty = "n")
+
+
