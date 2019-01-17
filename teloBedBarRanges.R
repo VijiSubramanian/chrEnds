@@ -97,3 +97,23 @@ teloBedBarRanges20 = function(Sample, genome, begin=20000, lengthToCollect=11000
     # return data
     return(list(meanEnds, meanInt, listEnds, listInt))
 }
+
+########
+
+######## source above file
+#source("/Volumes/LabShare/Viji/Scripts/ChIPSeq_R/SK1Yue_Bed/teloBedBarRanges.R")
+
+######## calculate signal in EARs and interstitial regions; input bedgraph files
+#AH6179Hop1T3_endInt <- teloBedBarRanges(AH6179Hop1T3, genome = "SK1Yue", begin = 20000, lengthToCollect = 110000)
+#AH6179Hop1T6_endInt <- teloBedBarRanges(AH6179Hop1T6, genome = "SK1Yue", begin = 20000, lengthToCollect = 110000)
+
+######## plot bar graph
+#par(las=1)
+#colours_end <- c( "#E9C06D",  "#F2AB1E")
+#colours_mid <- c("#C277B1",  "#74297B")
+#barplot(c(AH6179Hop1T3_endInt[[1]], AH6179Hop1T6_endInt[[1]],  AH6179Hop1T3_endInt[[2]], AH6179Hop1T6_endInt[[2]]), col=c(colours_end, colours_mid), ylim = c(0,1.6))
+#abline(h = 1, col = "gray60", lwd=3, lty=3)
+
+######### calculate significance with Mann-WHiney-Wilcoxon test
+#wilcox.test(AH6179Hop1T3_endInt[[3]]$avrg_signal, AH6179Hop1T6_endInt[[3]]$avrg_signal)
+
